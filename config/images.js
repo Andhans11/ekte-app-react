@@ -1,3 +1,3 @@
 export const Images = {
-  logo: require("../assets/flame.png"),
+  logo: require("../assets/logo_ekte_rosa_300.png"),
 };

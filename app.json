@@ -1,0 +1,14 @@
+{
+    "expo": {
+      "splash": {
+        "image": "./assets/logo_ekte_rosa_300.png",
+        "resizeMode": "contain",
+        "backgroundColor": "#faf2f5"
+      },
+      "platforms": ["ios", "android", "web"],
+      "version": "1.0.0",
+      "orientation": "portrait",
+      "icon": "./assets/icon.png"
+    }
+  }
+  

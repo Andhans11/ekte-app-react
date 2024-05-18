@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import { Text, StyleSheet } from "react-native";
+import { Text, StyleSheet, TouchableOpacity } from "react-native";
 import { Formik } from "formik";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-
-import { View, TextInput, Logo, Button, FormErrorMessage } from "../components";
+import { View, TextInput, Logo, Button as CustomButton, FormErrorMessage } from "../components";
 import { Images, Colors, auth } from "../config";
 import { useTogglePasswordVisibility } from "../hooks";
 import { signupValidationSchema } from "../utils";
@@ -35,7 +34,7 @@ export const SignupScreen = ({ navigation }) => {
         {/* LogoContainer: consist app logo and screen title */}
         <View style={styles.logoContainer}>
           <Logo uri={Images.logo} />
-          <Text style={styles.screenTitle}>Create a new account!</Text>
+          <Text style={styles.screenTitle}></Text>
         </View>
         {/* Formik Wrapper */}
         <Formik
@@ -60,7 +59,7 @@ export const SignupScreen = ({ navigation }) => {
               <TextInput
                 name="email"
                 leftIconName="email"
-                placeholder="Enter email"
+                placeholder="E-postadresse"
                 autoCapitalize="none"
                 keyboardType="email-address"
                 textContentType="emailAddress"
@@ -73,7 +72,7 @@ export const SignupScreen = ({ navigation }) => {
               <TextInput
                 name="password"
                 leftIconName="key-variant"
-                placeholder="Enter password"
+                placeholder="Passord"
                 autoCapitalize="none"
                 autoCorrect={false}
                 secureTextEntry={passwordVisibility}
@@ -91,7 +90,7 @@ export const SignupScreen = ({ navigation }) => {
               <TextInput
                 name="confirmPassword"
                 leftIconName="key-variant"
-                placeholder="Enter password"
+                placeholder="Gjenta passord"
                 autoCapitalize="none"
                 autoCorrect={false}
                 secureTextEntry={confirmPasswordVisibility}
@@ -111,19 +110,24 @@ export const SignupScreen = ({ navigation }) => {
                 <FormErrorMessage error={errorState} visible={true} />
               ) : null}
               {/* Signup button */}
-              <Button style={styles.button} onPress={handleSubmit}>
-                <Text style={styles.buttonText}>Signup</Text>
-              </Button>
+              <CustomButton
+                style={styles.halfWidthButton}
+                borderless
+                type="secondary"
+                title={"Start planleggingen"}
+                onPress={handleSubmit}
+              />
             </>
           )}
         </Formik>
         {/* Button to navigate to Login screen */}
-        <Button
+        <TouchableOpacity
           style={styles.borderlessButtonContainer}
-          borderless
-          title={"Already have an account?"}
-          onPress={() => navigation.navigate("Login")}
-        />
+          onPress={() => navigation.navigate('Login')}
+        >
+          <Text style={styles.borderlessButton}>Har du allere begynt planleggingen?</Text>
+          <Text style={styles.linkText}>Logg inn her</Text>
+        </TouchableOpacity>
       </KeyboardAwareScrollView>
     </View>
   );
@@ -132,8 +136,8 @@ export const SignupScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Colors.white,
     paddingHorizontal: 12,
+    backgroundColor: Colors.background,
   },
   logoContainer: {
     alignItems: "center",
@@ -149,18 +153,27 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     marginTop: 8,
-    backgroundColor: Colors.orange,
+    backgroundColor: Colors.primary,
     padding: 10,
     borderRadius: 8,
   },
   buttonText: {
     fontSize: 20,
-    color: Colors.white,
+    color: Colors.textlight,
     fontWeight: "700",
   },
   borderlessButtonContainer: {
     marginTop: 16,
     alignItems: "center",
     justifyContent: "center",
+  },
+  halfWidthButton: {
+    width: '100%',
+    marginTop: 20,
+  },
+  linkText: {
+    fontSize: 16,
+    color: Colors.text,
+    textDecorationLine: 'underline',
   },
 });

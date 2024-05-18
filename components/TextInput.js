@@ -3,8 +3,9 @@ import { TextInput as RNTextInput } from 'react-native';
 
 import { View } from './View';
 import { Icon } from './Icon';
-import { Button } from './Button';
+import { Button as CustomButton } from './Button';
 import { Colors } from '../config';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 export const TextInput = ({
   width = '100%',
@@ -45,14 +46,14 @@ export const TextInput = ({
         {...otherProps}
       />
       {rightIcon ? (
-        <Button onPress={handlePasswordVisibility}>
+        <TouchableOpacity onPress={handlePasswordVisibility}>
           <Icon
             name={rightIcon}
             size={22}
             color={Colors.mediumGray}
             style={{ marginRight: 10 }}
           />
-        </Button>
+        </TouchableOpacity>
       ) : null}
     </View>
   );

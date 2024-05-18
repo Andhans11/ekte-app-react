@@ -2,17 +2,16 @@ import "dotenv/config";
 
 export default {
   expo: {
-    name: "Expo Firebase Starter",
-    slug: "expo-firebase",
+    name: "Ekte planlegging",
+    slug: "ekte-app",
     privacy: "public",
     platforms: ["ios", "android"],
     version: "0.19.0",
     orientation: "portrait",
-    icon: "./assets/flame.png",
+    icon: "./assets/splash.png",
     splash: {
       image: "./assets/splash.png",
-      resizeMode: "cover",
-      backgroundColor: "#F57C00",
+      backgroundColor: "#faf2f5", 
     },
     updates: {
       fallbackToCacheTimeout: 0,
