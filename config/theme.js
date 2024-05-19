@@ -6,6 +6,7 @@ export const Colors = {
   black: "#222222",
   mediumGray: "#6e6869",
   red: "#fc5c65",
+  
 
   primary: "#D6B0A5",    // Updated to pastel pink
   secondary: "#ABBCCB",  // Updated to soft teal
